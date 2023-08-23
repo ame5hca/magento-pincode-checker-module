@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="AmeshExtensions\PincodeChecker\Api\Data\PincodeInterface" type="AmeshExtensions\PincodeChecker\Model\Pincode"/>
+    <preference for="AmeshExtensions\PincodeChecker\Api\Data\PincodeSearchResultInterface" type="AmeshExtensions\PincodeChecker\Model\ResourceModel\Pincode\Collection"/>
+	<preference for="AmeshExtensions\PincodeChecker\Api\PincodeRepositoryInterface" type="AmeshExtensions\PincodeChecker\Model\PincodeRepository"/>
+	<preference for="AmeshExtensions\PincodeChecker\Model\Spi\PincodeResourceInterface" type="AmeshExtensions\PincodeChecker\Model\ResourceModel\Pincode"/>
+	<virtualType name="AmeshExtensions\PincodeChecker\Model\ResourceModel\Pincode\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">ameshextensions_pincodes</argument>
+			<argument name="resourceModel" xsi:type="string">AmeshExtensions\PincodeChecker\Model\ResourceModel\Pincode\Collection</argument>
+		</arguments>
+	</virtualType>	
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="pincode_grid_data_source" xsi:type="string">AmeshExtensions\PincodeChecker\Model\ResourceModel\Pincode\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>	
+</config>
+
+

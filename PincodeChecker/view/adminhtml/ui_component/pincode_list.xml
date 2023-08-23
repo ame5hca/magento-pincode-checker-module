@@ -1,0 +1,181 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">pincode_list.pincode_grid_data_source</item>
+			<item name="deps" xsi:type="string">pincode_list.pincode_grid_data_source</item>
+		</item>
+		<item name="spinner" xsi:type="string">pincode_columns</item>
+		<item name="buttons" xsi:type="array">
+			<item name="add" xsi:type="array">
+				<item name="name" xsi:type="string">add</item>
+				<item name="label" xsi:type="string">Add New Pincode</item>
+				<item name="class" xsi:type="string">primary</item>
+				<item name="url" xsi:type="string">*/*/new</item>
+			</item>
+		</item>
+	</argument>
+	<dataSource name="pincode_grid_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+			<argument name="name" xsi:type="string">pincode_grid_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+					<item name="update_url" path="mui/index/render" xsi:type="url"/>
+					<item name="storageConfig" xsi:type="array">
+						<item name="indexField" xsi:type="string">id</item>
+					</item>
+				</item>
+			</argument>
+		</argument>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		 <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+         <exportButton name="export_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">pincode_list.pincode_list.pincode_columns.ids</item>
+                </item>
+            </argument>
+        </exportButton>
+		<massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+		    <argument name="data" xsi:type="array">
+		        <item name="config" xsi:type="array">
+		            <item name="selectProvider" xsi:type="string">pincode_list.pincode_list.pincode_columns.ids</item>
+		            <item name="indexField" xsi:type="string">id</item>
+		        </item>
+		    </argument>
+		    <action name="delete">
+		        <argument name="data" xsi:type="array">
+		            <item name="config" xsi:type="array">
+		                <item name="type" xsi:type="string">delete</item>
+		                <item name="label" xsi:type="string" translate="true">Delete Pincode(s)</item>
+		                <item name="url" xsi:type="url" path="pincodechecker/pincodechecker/massDelete"/>
+		                <item name="confirm" xsi:type="array">
+		                    <item name="title" xsi:type="string" translate="true">Delete Pincode(s)</item>
+		                    <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected Pincode(s)?</item>
+		                </item>
+		            </item>
+		        </argument>
+		    </action>
+			<action name="status">
+                <settings>
+                    <type>status</type>
+                    <label translate="true">Change Status</label>
+                    <actions>
+                        <action name="0">
+                            <type>enable</type>
+                            <label translate="true">Enable</label>
+                            <url path="pincodechecker/pincodechecker/massStatusUpdate">
+                                <param name="status">1</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>disable</type>
+                            <label translate="true">Disable</label>
+                            <url path="pincodechecker/pincodechecker/massStatusUpdate">
+                                <param name="status">0</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+		</massaction>
+		<bookmark name="bookmark"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="pincode_columns">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="editorConfig" xsi:type="array">
+					<item name="selectProvider" xsi:type="string">pincode_list.pincode_list.pincode_columns.ids</item>
+					<item name="enabled" xsi:type="boolean">true</item>
+					<item name="indexField" xsi:type="string">id</item>
+					<item name="clientConfig" xsi:type="array">
+						<item name="saveUrl" path="pincodechecker/pincodechecker/inlineEdit" xsi:type="url"/>
+						<item name="validateBeforeSave" xsi:type="boolean">false</item>
+					</item>
+				</item>
+				<item name="childDefaults" xsi:type="array">
+					<item name="fieldAction" xsi:type="array">
+						<item name="provider" xsi:type="string">pincode_list.pincode_list.pincode_columns_editor</item>
+						<item name="target" xsi:type="string">startEdit</item>
+						<item name="params" xsi:type="array">
+							<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+							<item name="1" xsi:type="boolean">true</item>
+						</item>
+					</item>
+				</item>
+			</item>
+		</argument>
+		<selectionsColumn name="ids">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">id</item>
+				</item>
+			</argument>
+		</selectionsColumn>
+		<column name="pincode">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Pincode</item>
+					<item name="editor" xsi:type="array">
+						<item name="editorType" xsi:type="string">text</item>
+						<item name="validation" xsi:type="array">
+							<item name="required-entry" xsi:type="boolean">false</item>
+						</item>
+					</item>
+				</item>
+			</argument>
+		</column>		
+		<column name="division">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Division</item>					
+				</item>
+			</argument>
+		</column>
+		<column name="district">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">District</item>					
+				</item>
+			</argument>
+		</column>
+		<column name="state">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">State</item>					
+				</item>
+			</argument>
+		</column>		
+		<column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <options class="AmeshExtensions\PincodeChecker\Ui\Component\Listing\Column\Status"/>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>                
+            </settings>
+        </column>
+		<actionsColumn class="AmeshExtensions\PincodeChecker\Ui\Component\Listing\Column\Actions" name="actions">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">id</item>
+				</item>
+			</argument>
+		</actionsColumn>
+	</columns>
+</listing>

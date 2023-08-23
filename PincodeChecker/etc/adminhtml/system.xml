@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ameshextensions" translate="label" sortOrder="110">
+            <label>AmeshExtensions</label>
+        </tab>
+        <section id="pincode" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Delivery Checker</label>
+            <tab>ameshextensions</tab>
+            <resource>Magento_Backend::content</resource>
+            <group id="general" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>                
+                <field id="successmessage" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Success Message</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="failmessage" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Fail Message</label>
+                    <validate>required-entry</validate>
+                </field>                
+            </group>
+            <group id="delivery" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Delivery Configurations</label> 
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Distance And Weight Based Checking</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>               
+                <field id="max_delivery_distance" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Max Delivery Distance(in Km)</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="max_delivery_weight" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Max Delivery Weight(in Kg)</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="delivery_days" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Delivery Within</label>
+                    <comment><![CDATA[No of days for order delivery, eg: 5.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,120 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">pincode_form.pincode_form_data_source</item>
+			<item name="deps" xsi:type="string">pincode_form.pincode_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">pincode_form</item>
+		</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+		<item name="buttons" xsi:type="array">
+			<item name="back" xsi:type="string">AmeshExtensions\PincodeChecker\Block\Adminhtml\PincodeChecker\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">AmeshExtensions\PincodeChecker\Block\Adminhtml\PincodeChecker\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">AmeshExtensions\PincodeChecker\Block\Adminhtml\PincodeChecker\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">AmeshExtensions\PincodeChecker\Block\Adminhtml\PincodeChecker\Edit\SaveAndContinueButton</item>
+		</item>
+	</argument>
+	<dataSource name="pincode_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">AmeshExtensions\PincodeChecker\Model\PincodeChecker\DataProvider</argument>
+			<argument name="name" xsi:type="string">pincode_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" path="*/*/save" xsi:type="url"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource>
+	<fieldset name="General">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string"/>
+			</item>
+		</argument>
+		<field name="pincode">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Pincode</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">pincodechecker</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataScope" xsi:type="string">pincode</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="division">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Division</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">pincodechecker</item>
+					<item name="sortOrder" xsi:type="number">11</item>
+					<item name="dataScope" xsi:type="string">division</item>					
+				</item>
+			</argument>
+		</field>
+		<field name="district">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">District</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">pincodechecker</item>
+					<item name="sortOrder" xsi:type="number">12</item>
+					<item name="dataScope" xsi:type="string">district</item>					
+				</item>
+			</argument>
+		</field>
+		<field name="state">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">State</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">pincodechecker</item>
+					<item name="sortOrder" xsi:type="number">13</item>
+					<item name="dataScope" xsi:type="string">state</item>					
+				</item>
+			</argument>
+		</field>
+		<field name="status" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="label" xsi:type="string">Disabled</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string">Enabled</item>
+                            </option>                            
+                        </options>                        
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+	</fieldset>
+</form>

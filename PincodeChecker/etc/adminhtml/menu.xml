@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="AmeshExtensions_PincodeChecker::top" module="AmeshExtensions_PincodeChecker" resource="Magento_Backend::content" sortOrder="20" title="Pincode Checker"/>
+		<add action="pincodechecker/pincodechecker/index" id="AmeshExtensions_PincodeChecker::pincodechecker" module="AmeshExtensions_PincodeChecker" parent="AmeshExtensions_PincodeChecker::top" resource="Magento_Backend::content" sortOrder="10" title="Pincodes"/>
+        <add action="adminhtml/system_config/edit/section/pincode" id="AmeshExtensions_PincodeChecker::pincodechecker_settings" module="AmeshExtensions_PincodeChecker" parent="AmeshExtensions_PincodeChecker::top" resource="Magento_Backend::content" sortOrder="20" title="Settings"/>
+	</menu>
+</config>

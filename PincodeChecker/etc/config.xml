@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <pincode>
+            <general>
+                <active>1</active>                
+                <successmessage>Pincode is Available For This Product</successmessage>
+                <failmessage>Pincode is Not Available For This Product</failmessage>                
+            </general>
+            <delivery>                
+                <active>0</active>
+                <max_delivery_distance>30</max_delivery_distance>
+                <max_delivery_weight>5</max_delivery_weight>
+                <delivery_days>3</delivery_days>
+            </delivery>
+        </pincode>
+    </default>
+</config>

@@ -1,0 +1,26 @@
+{
+    "name": "ameshextensions/module-pincodechecker",
+    "description": "Magento 2 Pincode Checker Module",
+    "require": {
+        "magento/module-store": ">100.0",
+        "magento/module-backend": ">100.0",
+        "magento/framework": ">100.0"
+    },
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "email": "ameshca@gmail.com",
+            "name": "AmeshExtensions"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "AmeshExtensions\\PincodeChecker\\": ""
+        }
+    }
+}
